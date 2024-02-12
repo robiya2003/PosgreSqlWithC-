@@ -284,7 +284,17 @@ namespace PosgreSqlWithC_
             npgsqlConnection.Close() ;
             #endregion
         }
-        
 
+        public void CreateDatabase()
+        {
+            #region
+            string query = "create database Nodatabase";
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(CONNECTINGSTRING);
+            npgsqlConnection.Open();
+            NpgsqlCommand npgsqlCommand = new NpgsqlCommand(query, npgsqlConnection);
+            npgsqlCommand.ExecuteNonQuery();
+            npgsqlConnection.Close();
+            #endregion
+        }
     }
 }
