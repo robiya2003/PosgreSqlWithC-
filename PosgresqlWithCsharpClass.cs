@@ -285,11 +285,24 @@ namespace PosgreSqlWithC_
             #endregion
         }
 
-        public void CreateDatabase()
+        public void CreateDatabase1()
         {
             #region
             string query = "create database Nodatabase";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(CONNECTINGSTRING);
+            npgsqlConnection.Open();
+            NpgsqlCommand npgsqlCommand = new NpgsqlCommand(query, npgsqlConnection);
+            npgsqlCommand.ExecuteNonQuery();
+            npgsqlConnection.Close();
+            #endregion
+        }
+        public void CreateDatabase1_FOR_Tables()
+        {
+            string CONNECTINGSTRING1 = "Server=127.0.0.1;Port=5432;Database=Nodatabase;User Id=postgres;Password=dfrt43i0";
+            #region
+            string query = "create table About(Fullname varchar(50)," +
+                "age int)";
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(CONNECTINGSTRING1);
             npgsqlConnection.Open();
             NpgsqlCommand npgsqlCommand = new NpgsqlCommand(query, npgsqlConnection);
             npgsqlCommand.ExecuteNonQuery();
